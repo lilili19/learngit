@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>后台管理系统-beta</title>
+	<link rel="stylesheet" href="css/index.css">
+	<style>
+		@media screen and (max-width: 1000px) {
+		    .oxc {
+		        width: 0;
+		    }
+		    aside{margin-left: 0;}
+		}
+		.oxc{
+			transition: width 0.5s;
+			-moz-transition: width 0.5s; /* Firefox 4 */
+			-webkit-transition: width 0.5s; /* Safari 和 Chrome */
+			-o-transition: width 0.5s; /
+		}
+		aside{
+			transition: width 0.5s;
+			-moz-transition: width 0.5s; /* Firefox 4 */
+			-webkit-transition: width 0.5s; /* Safari 和 Chrome */
+			-o-transition: width 0.5s; /
+		}
+	</style>
+</head>
+<body>
+	<header>
+		<div class="header1 ">后台管理系统-beta</div>
+		<!-- <div class="header2">图片(暂时)</div> -->
+		<!-- <div class="header3">登录信息</div> -->
+		<div class="header4" style="margin-right: 20px;"></div>
+	</header>
+	<section>
+		<!-- 页面导航部分 -->
+		<nav id="app">
+			<div class="oxc">
+				<ul>
+					<li v-for="(row,index) in navs">
+						<p @click="table(index,row.state)">{{row.title}}
+							<span :class="row.state?'title_span1':'title_span2'"></span>
+						</p>
+						<dl>
+							<dd v-for="(item,index) in row.children" onclick="bindPage(this)">
+								<a href="javascript:;" :bindUrl='item.href'>{{item.title}}</a>
+							</dd>
+						</dl>	
+					</li>
+				</ul>
+			</div>	
+		</nav>
+		<!-- 侧边页面内容 -->
+		<aside>
+			<!-- <ul class="pageNav">
+				<li class="thisShow" style="padding: 0px 20px;" onClick="pageTab(this)">控制面板</li>			
+			</ul> -->
+			<ul class="pageShow">
+				<!-- <li style="display: block;"> -->
+					<!-- <iframe src="childPage.html"></iframe> -->
+				<!-- </li> -->
+			</ul>			
+		</aside>	
+	</section>
+	<!-- 尾部 -->
+	<footer>Copyright © 2017 xlbs.com</footer>		
+	<script src="js/jquery-1.8.3.min.js"></script>
+	<script src="js/vue.min.js"></script>
+	<script src="js/nav.js"></script>
+	<script src="js/index.js"></script>
+</body>
+</html>
